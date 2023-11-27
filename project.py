@@ -21,7 +21,7 @@ class ToDoList():
 
     def show_task(self):
         if not self.tasks:
-            print("No tasks found.")
+            print("Заданий нет, возможно нужно добавить.")
         else:
             for index, task in enumerate(self.tasks):
                 print(f"Задание #{index + 1}")
@@ -40,13 +40,16 @@ class ToDoList():
         if index >= 0 and index < len(self.tasks):
             del self.tasks[index]
 
-    def edit_task(self, task_num, new_nazvanie, new_opisanie):
-        if task_num < 1 or task_num > len(self.tasks):
-            print("Invalid task number.")
+    def edit_task(self, index, new_nazvanie, new_opisanie, new_date):
+        if index < 1 or index > len(self.tasks):
+            print("Нет такого задания.")
         else:
-            task = self.tasks[task_num - 1]
+            task = self.tasks[index - 1]
             task.nazvanie = new_nazvanie
-            task.description = new_opisanie
+            task.opisanie = new_opisanie
+            task.task_date= new_date
+          
+
 
     def menu(self):
         print("===== Menu =====")
@@ -59,25 +62,26 @@ class ToDoList():
     def run(self):
         while True:
             self.menu()
-            choice = input("Enter NUMBER: ")
+            choice = input("Выберите действие: ")
             if choice == "1":
                 self.show_task()
             elif choice == "2": 
-                nazvanie = input("Enter task title: ")
-                opisanie = input("Enter task description: ")
-                task_date= input("Enter task date: ")
+                nazvanie = input("Введите название задания: ")
+                opisanie = input("Описание: ")
+                task_date= input("Дата выполнения: ")
                 self.add_task(nazvanie, opisanie,task_date)
-                print("Task added successfully.")
+                print("Задание успешно добавлено.")
             elif choice == "3":
-                index = int(input("Enter task index to remove: ")) - 1
+                index = int(input("Номер какого задания нужно удалить: ")) - 1
                 self.remove_task(index)
-                print("Task removed successfully.")
+                print("Удалено успешно.")
             elif choice == "4":
-                index = int(input("Enter task index to edit: ")) - 1
-                title = input("Enter new task title: ")
-                description = input("Enter new task description: ")
-                self.edit_task(index, title, description)
-                print("Task edited successfully.")
+                index = int(input("Номер какого задания нужно исправить?: ")) - 1
+                nazvanie = input("Введите новое название: ")
+                opisanie = input("введите новое описание задания: ")
+                date_n= input ('Введите новую дату')
+                self.edit_task(index, nazvanie, opisanie, date_n)
+                print("Успешно изменено.")
             else:
                 print("Нет такого пункта")
 
