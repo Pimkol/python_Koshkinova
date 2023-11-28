@@ -49,7 +49,9 @@ class ToDoList():
             task.opisanie = new_opisanie
             task.task_date= new_date
           
-
+    def save_tasks(self, filename):
+        with open(filename, 'w') as file:
+            file.write(self.tasks)
 
     def menu(self):
         print("===== Menu =====")
@@ -57,6 +59,8 @@ class ToDoList():
         print("2. Add task")
         print("3. Remove task")
         print("4. Edit task")
+        print("5. Save task")
+
       
 
     def run(self):
@@ -82,6 +86,9 @@ class ToDoList():
                 date_n= input ('Введите новую дату')
                 self.edit_task(index, nazvanie, opisanie, date_n)
                 print("Успешно изменено.")
+            elif choice == "5":
+                filename = input('Введите название файла')
+                self.save_tasks(filename)
             else:
                 print("Нет такого пункта")
 
