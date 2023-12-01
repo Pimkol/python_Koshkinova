@@ -1,25 +1,13 @@
-from abc import ABC, abstractmethod
+import tkinter as tk
+from tkinter import *
+window=tk.Tk()
+window.title= "Кнопка Выход"
+window.geometry('400x400')
+label=tk.Label(window,text='Жакенова Назгуль Алихановна')
 
-class Drawable(ABC):
-    @abstractmethod
-    def draw(self):
-        pass
+label.pack()
 
-class Circle(Drawable):
-    def __init__(self, radius):
-        self.radius = radius
-    
-    def draw(self):
-        print(f"Рисую круг с радиусом {self.radius}")
 
-class Rectangle(Drawable):
-    def __init__(self, w, h):
-        self.w = w
-        self.h = h
-    
-    def draw(self):
-        print(f"Рисую прямоугольник с размерами {self.w}x{self.h}")
 
-shapiki = [Circle(6),Rectangle(3,8)]
-for sh in shapiki:
-    print (sh.draw())
+
+window.mainloop()
