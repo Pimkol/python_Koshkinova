@@ -31,7 +31,7 @@ class ToDoList():
     # def del_task (self, nazvanie):
     #     for i in self.tasks:
     #         if i['nazvanie'] == nazvanie:
-    #             del self.tasks['nazvanie']
+    #             #del self.tasks['nazvanie']
     #             del self.tasks['opisanie']
     #             del self.tasks['task_date']
     #         else: print ('there is no such task')
@@ -39,7 +39,7 @@ class ToDoList():
     def remove_task(self, index):
         if index >= 0 and index < len(self.tasks):
             del self.tasks[index]
-
+    # поменять ключ на индекс
     def edit_task(self, index, new_nazvanie, new_opisanie, new_date):
         if index < 1 or index > len(self.tasks):
             print("Нет такого задания.")
@@ -91,8 +91,6 @@ class ToDoList():
                 self.save_tasks(filename)
             else:
                 print("Нет такого пункта")
-
-
 d= ToDoList()
 d.run()
 
